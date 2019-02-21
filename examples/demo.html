@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Responsive Hijri/Gregorian Dual Calendar Demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="ZulNs">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="robots" content="all">
+<meta name="copyright" content="ZulNs">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<!--link rel="icon" href="favicon.png" type="image/png" /-->
+<!--link rel="icon" href="favicon.ico" type="image/x-icon" /-->
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../libs/w3css/w3.css" />
+<script type="text/javascript" src="../libs/hijri-date.js"></script>
+<script type="text/javascript" src="../libs/calendar.js"></script>
+
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:220px;z-index:2" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-ripple w3-large w3-hide-large" onclick="closeSidebar()">Close<span class="w3-right">&times;</span></button>
+  <button class="w3-bar-item w3-button w3-ripple collapsed" onclick="dropdown(this)">
+		<span>Set Language</span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 3L5 7L9 3Z"/></svg></span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 7L5 3L9 7Z"/></svg></span>
+	</button>
+		<div class="w3-bar-block w3-light-grey">
+			<div class="w3-bar-item w3-button" onclick="selectLang(this)">
+				<input id="langEn" class="w3-radio" type="radio" name="lang" value="en" checked>
+				<label for="langEn">English</label>
+			</div>
+			<div class="w3-bar-item w3-button" onclick="selectLang(this)">
+				<input id="langAr" class="w3-radio" type="radio" name="lang" value="ar">
+				<label for="langAr">Arabic</label>
+			</div>
+			<div class="w3-bar-item w3-button" onclick="selectLang(this)">
+				<input id="langId" class="w3-radio" type="radio" name="lang" value="id">
+				<label for="langId">Indonesian</label>
+			</div>
+		</div>
+  <button class="w3-bar-item w3-button w3-ripple collapsed" onclick="dropdown(this)">
+		<span>Set Full Year</span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 3L5 7L9 3Z"/></svg></span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 7L5 3L9 7Z"/></svg></span>
+	</button>
+		<div class="w3-bar-block w3-light-grey">
+			<div class="w3-bar-item">
+				<input id="valYear" class="w3-input w3-border" type="text" placeholder="full year value...">
+			</div>
+			<button class="w3-bar-item w3-button w3-ripple" onclick="setYear()">Apply</button>
+		</div>
+  <button class="w3-bar-item w3-button w3-ripple collapsed" onclick="dropdown(this)">
+		<span>Set Month</span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 3L5 7L9 3Z"/></svg></span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 7L5 3L9 7Z"/></svg></span>
+	</button>
+		<div class="w3-bar-block w3-light-grey">
+			<div class="w3-bar-item">
+				<input id="valMonth" class="w3-input w3-border" type="text" placeholder="month value...">
+			</div>
+			<button class="w3-bar-item w3-button w3-ripple" onclick="setMonth()">Apply</button>
+		</div>
+  <button class="w3-bar-item w3-button w3-ripple collapsed" onclick="dropdown(this)">
+		<span>Set Theme</span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 3L5 7L9 3Z"/></svg></span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 7L5 3L9 7Z"/></svg></span>
+	</button>
+		<div class="w3-bar-block w3-light-grey">
+			<div class="w3-bar-item">
+				<input id="txtTheme" class="w3-input w3-border" type="text" placeholder="theme-color or index">
+			</div>
+			<button class="w3-bar-item w3-button w3-ripple" onclick="setTheme()">Apply</button>
+		</div>
+  <button class="w3-bar-item w3-button w3-ripple collapsed" onclick="dropdown(this)">
+		<span>Set Today Timeout</span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 3L5 7L9 3Z"/></svg></span>
+		<span class="w3-right"><svg width="10" height="10"><path d="M1 7L5 3L9 7Z"/></svg></span>
+	</button>
+		<div class="w3-bar-block w3-light-grey">
+			<div class="w3-bar-item">
+				<input id="valTimeout" class="w3-input w3-border" type="text" placeholder="timeout value...">
+			</div>
+			<button class="w3-bar-item w3-button w3-ripple" onclick="setTodayTimeout()">Apply</button>
+		</div>
+</div>
+
+<div class="w3-main" style="margin-left:220px">
+	<div class="w3-container w3-padding w3-teal">
+		<button class="w3-button w3-ripple w3-xlarge w3-hide-large w3-left" style="margin:6px 8px 0px -16px" onclick="openSidebar()">
+			<svg width="18" height="23"><path d="M0 6L18 6L18 8L0 8Z M0 13L18 13L18 15L0 15Z M0 20L18 20L18 22L0 22Z"/></svg>
+		</button>
+		<h2>Responsive Hijri/Gregorian Dual Calendar Demo</h2>
+	</div>
+
+	<div id="calendar" class="w3-container w3-margin-top"></div>
+</div>
+
+<script type="text/javascript">
+let cal=new Calendar();
+cal.attachTo(document.getElementById('calendar'));
+
+function openSidebar(){
+	document.getElementById("mySidebar").style.display = "block"
+}
+
+function closeSidebar(){
+	document.getElementById("mySidebar").style.display = "none"
+}
+
+function dropdown(el){
+	if(el.className.indexOf('expanded')==-1){
+		el.className=el.className.replace('collapsed','expanded');
+	}else{
+		el.className=el.className.replace('expanded','collapsed');
+	}
+}
+
+function selectLang(el){
+	el.children[0].checked=true;
+	cal.setLanguage(el.children[0].value)
+}
+
+function setYear(){
+	let el=document.getElementById('valYear');
+	cal.setFullYear(el.value)
+}
+
+function setMonth(){
+	let el=document.getElementById('valMonth');
+	cal.setMonth(el.value)
+}
+
+function setTheme(){
+	let el=document.getElementById('txtTheme');
+	let n=parseInt(el.value);
+	if(!isNaN(n))cal.setTheme(n);
+	else cal.setTheme(el.value)
+}
+
+function setTodayTimeout(){
+	let el=document.getElementById('valTimeout');
+	cal.setTodayTimeout(el.value)
+}
+</script>
+</body>
+</html>
