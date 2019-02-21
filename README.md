@@ -1,5 +1,5 @@
 # Hijri-Greg-Dual-Calendar-JS-lib
-JavaScript library to create Hijri/Gregorian Dual Calendar
+JavaScript library to creates Hijri/Gregorian Dual Calendar
 Supported language:
 - English (en)
 - Arabic (ar)
