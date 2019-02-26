@@ -9,14 +9,15 @@
 <meta name="description" content="">
 <meta name="robots" content="all">
 <meta name="copyright" content="ZulNs">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <!--link rel="icon" href="favicon.png" type="image/png" /-->
 <!--link rel="icon" href="favicon.ico" type="image/x-icon" /-->
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="../libs/w3css/w3.css" />
-<script type="text/javascript" src="../libs/hijri-date.js"></script>
-<script type="text/javascript" src="../libs/calendar.js"></script>
+<link rel="stylesheet" type="text/css" href="../w3css/w3.css" />
+<style type="text/css">
+.w3-bar-item input[type=radio],.w3-bar-item label{cursor:pointer}
+</style>
 
 <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:220px;z-index:2" id="mySidebar">
   <button class="w3-bar-item w3-button w3-ripple w3-large w3-hide-large" onclick="closeSidebar()">Close<span class="w3-right">&times;</span></button>
@@ -83,6 +84,8 @@
 			</div>
 			<button class="w3-bar-item w3-button w3-ripple" onclick="setTodayTimeout()">Apply</button>
 		</div>
+  <a class="w3-bar-item w3-button w3-ripple" href="../Datepicker.js/index.html">See My Datepicker</a>
+  <a class="w3-bar-item w3-button w3-ripple" href="../Timepicker.js/index.html">See My Timepicker</a>
 </div>
 
 <div class="w3-main" style="margin-left:220px">
@@ -96,7 +99,10 @@
 	<div id="calendar" class="w3-container w3-margin-top"></div>
 </div>
 
+<script type="text/javascript" src="../HijriDate.js/hijri-date.js"></script>
+<script type="text/javascript" src="calendar.js"></script>
 <script type="text/javascript">
+'use strict';
 let cal=new Calendar();
 cal.attachTo(document.getElementById('calendar'));
 
