@@ -1,7 +1,7 @@
 # Responsive Hijri/Gregorian Dual Calendar
 
 ## Demo
-Demo [here](https://zulns.github.io/Datepicker.js/).
+Demo [here](https://zulns.github.io/Calendar.js/).
 
 ## Dependencies
 - [HijriDate.js](https://github.com/ZulNs/HijriDate.js) which allows the use of
