@@ -8,7 +8,7 @@
 function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 	if(typeof HijriDate=='undefined')throw new Error('HijriDate() class required!');
 	let cd=typeof this=='object'?this:window,gdate=new Date(),hdate=new HijriDate(),dispDate,tzOffset=Date.parse('01 Jan 1970'),
-	gridAni='zoom',actTmoId,isDispToday=false,isAttached=false,isAccOpened=false,isAutoNewTheme,isRTL=false,
+	gridAni='zoom',actTmoId,isDispToday=false,isAccOpened=false,isAutoNewTheme,isRTL=false,
 	aboutElm,aboutTitleElm,aboutDateElm,aboutCloseBtnElm,
 	isSmallScreen=(window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth)<640,
 	createElm=function(tagName,className,innerHTML){
@@ -246,7 +246,7 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 		headerElm.className=headerElm.className.substring(0,headerElm.className.lastIndexOf('w3-'))+'w3-'+theme
 	},
 	replaceClass=function(el,dt,sr){el.className=el.className.replace(dt,sr)};
-	cd.attachTo=function(el){if(el.appendChild&&!isAttached){el.appendChild(calElm);onRszWdw();isAttached=true;return true}return false};
+	cd.attachTo=function(el){if(el.appendChild&&!calElm.parentNode){el.appendChild(calElm);onRszWdw();return true}return false};
 	cd.fireResize=function(){onRszWdw()};
 	cd.getElement=function(){return calElm};
 	cd.resetDate=function(y,m){
