@@ -1,4 +1,6 @@
-# Responsive Hijri/Gregorian Dual Calendar
+# JavaScript Responsive Hijri/Gregorian Dual Calendar Library
+
+&nbsp;
 
 ## Demo
 Demo [here](https://zulns.github.io/Calendar.js/).
@@ -54,7 +56,7 @@ Languages currently supported are:
 You can extend with your own language by adding this code snippet (assume your language is English):
 
 ```javascript
-Datepicker.language["en"] = {
+Calendar.language["en"] = {
     isRTL: false,             // or true for right to left language
     menuItem0: ["Hijri calendar", "Gregorian calendar"],
     menuItem1: "Firstday",
@@ -122,6 +124,8 @@ Datepicker.language["en"] = {
 
 ## API Documentation
 API doc [here](calendar-api-doc.md).
+
+&nbsp;
 
 &nbsp;
 
