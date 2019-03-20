@@ -1,6 +1,6 @@
 # JavaScript Responsive Hijri/Gregorian Dual Calendar Library
 
-[![zenodo-badge](https://zenodo.org/badge/171798515.svg)](https://zenodo.org/record/2600115)
+[![zenodo-badge](https://zenodo.org/badge/171798515.svg?)](https://zenodo.org/record/2600115)
 
 ## Demo
 Demo [here](https://zulns.github.io/Calendar.js/).
