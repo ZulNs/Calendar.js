@@ -19,9 +19,9 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 	},
 	calElm=createElm('div','zulns-calendar w3-card-4'),
 	headerElm=createElm('div','w3-display-container w3-theme'),
-	todayElm=createElm('div','w3-display-topright w3-xlarge unbreakable'),
-	yearValElm=createElm('div','w3-display-middle w3-xxxlarge unbreakable'),
-	monthValElm=createElm('div','w3-display-bottommiddle w3-xxlarge unbreakable'),
+	todayElm=createElm('div','w3-display-topright w3-large unbreakable'),
+	yearValElm=createElm('div','w3-display-middle w3-xxlarge unbreakable'),
+	monthValElm=createElm('div','w3-display-bottommiddle w3-xlarge unbreakable'),
 	menuBtnElm=createElm('button','w3-button w3-ripple','<svg width="18" height="23"><path d="M0 6L18 6L18 8L0 8Z M0 13L18 13L18 15L0 15Z M0 20L18 20L18 22L0 22Z"/></svg>'),
 	menuWrapElm=createElm('div','w3-dropdown-content w3-bar-block w3-border w3-light-grey'),
 	accFirstDayElm=createElm('div','w3-white w3-border-bottom'),
@@ -77,16 +77,16 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 			nextYearBtnElm=createElm('button','w3-button w3-ripple w3-display-right','<svg width="18" height="23"><path d="M11 7L16 15L11 23L9 23L14 15L9 7Z M4 7L9 15L4 23L2 23L7 15L2 7Z"/></svg>'),
 			prevMonthBtnElm=createElm('button','w3-button w3-ripple w3-display-bottomleft','<svg width="18" height="23"><path d="M10 7L5 15L10 23L12 23L7 15L12 7Z"/></svg>'),
 			nextMonthBtnElm=createElm('button','w3-button w3-ripple w3-display-bottomright','<svg width="18" height="23"><path d="M8 7L13 15L8 23L6 23L11 15L6 7Z"/></svg>');
-		headerElm.style.height='180px';
-		todayElm.style.cssText='margin:16px 28px 0px 0px;cursor:default';
+		headerElm.style.height='142px';
+		todayElm.style.cssText='margin:12px 20px 0px 0px;cursor:default';
 		yearValElm.style.cursor=gridsElm.style.cursor='default';
-		monthValElm.style.cssText='margin-bottom:8px;cursor:default';
-		rootMenuElm.style.cssText='margin:12px 0px 0px 12px';
-		prevYearBtnElm.style.cssText='margin-left:12px';
-		nextYearBtnElm.style.cssText='margin-right:12px';
-		prevMonthBtnElm.style.cssText='margin:0px 0px 12px 12px';
-		nextMonthBtnElm.style.cssText='margin:0px 12px 12px 0px';
-		wdayTitleElm.style.cssText='padding:8px 0px;margin-bottom:8px';
+		monthValElm.style.cssText='margin-bottom:7px;cursor:default';
+		rootMenuElm.style.cssText='margin:4px 0px 0px 4px';
+		prevYearBtnElm.style.cssText='margin-left:4px';
+		nextYearBtnElm.style.cssText='margin-right:4px';
+		prevMonthBtnElm.style.cssText='margin:0px 0px 4px 4px';
+		nextMonthBtnElm.style.cssText='margin:0px 4px 4px 0px';
+		wdayTitleElm.style.cssText='padding:4px 0px;margin-bottom:4px';
 		menuWrapElm.style.width='200px';
 		menuWrapElm.appendChild(menuCalModElm);menuWrapElm.appendChild(menuFirstDayElm);menuWrapElm.appendChild(accFirstDayElm);
 		menuWrapElm.appendChild(menuTodayElm);menuWrapElm.appendChild(menuNewThemeElm);menuWrapElm.appendChild(menuAboutElm);
@@ -154,7 +154,7 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 			let grid=createElm('div','w3-cell w3-animate-'+gridAni),
 				pde=createElm('div','w3-xlarge'),sde=createElm('div','w3-small unbreakable');
 			ttc=dispDate.getTime()+(pdate-1)*864e5;
-			grid.style.cssText='width:14.2857%;padding:6px 0px';
+			grid.style.cssText='width:14.2857%;padding:3px 0px';
 			grid.appendChild(pde);grid.appendChild(sde);row.appendChild(grid);
 			isToday=getCurTime()==ttc;
 			if(isToday)grid.className+=' w3-round-large';
@@ -180,7 +180,7 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 				sdim=getOppsDate().getDayCountInMonth();smsn=getOppsDate().getMonthShortName()
 			}gridCtr=++gridCtr%7
 		}
-		let spacer=createElm('div','w3-cell-row');spacer.style.height='8px';gridsElm.appendChild(spacer);dispDate.setTime(dispTm)
+		let spacer=createElm('div','w3-cell-row');spacer.style.height='4px';gridsElm.appendChild(spacer);dispDate.setTime(dispTm)
 	},
 	recreateDates=function(){
 		while(gridsElm.children[1])gridsElm.removeChild(gridsElm.children[1]);createDates()
@@ -261,7 +261,7 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 		if(f!=firstDay){
 			let el=accFirstDayElm.children[firstDay];
 			replaceClass(el,'w3-transparent','w3-button w3-ripple');
-			el.disabled=false;firstDay=f;recreateWdayTitle();gridAni='bottom';recreateDates();return true
+			el.disabled=false;firstDay=f;recreateWdayTitle();gridAni='top';recreateDates();return true
 		}return false
 	};
 	cd.setFullYear=function(y){return cd.resetDate(y)};
@@ -272,7 +272,7 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 			else{
 				let d=dispDate.getDate();dispDate.setDate(1);
 				if(d>15)dispDate.setMonth(dispDate.getMonth()+1);
-				gridAni='bottom';updCal()
+				gridAni='top';updCal()
 			}return true
 		}return false
 	};
@@ -311,7 +311,7 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 	};
 	cd.setTodayTimeout=function(t){t=HijriDate.int(t,tmout);if(t>=10){tmout=t;applyTodayTmout();return true}return false};
 	cd.today=function(){
-		if(!isDispToday){dispDate.setTime(getCurTime());dispDate.setDate(1);gridAni='bottom';updCal();return true}return false
+		if(!isDispToday){dispDate.setTime(getCurTime());dispDate.setDate(1);gridAni='top';updCal();return true}return false
 	};
 	if(typeof isHijr!='boolean')isHijr=false;
 	dispDate=isHijr?hdate:gdate;
