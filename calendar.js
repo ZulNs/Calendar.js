@@ -157,20 +157,24 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 			grid.style.cssText='width:14.2857%;padding:3px 0px';
 			grid.appendChild(pde);grid.appendChild(sde);row.appendChild(grid);
 			isToday=getCurTime()==ttc;
-			if(isToday)grid.className+=' w3-round-large';
-			if(i%7==isFri)grid.className+=isToday?' w3-teal':' w3-text-teal';
-			else if(i%7==isSun)grid.className+=isToday?' w3-red':' w3-text-red';
-			else if(isToday)grid.className+=' w3-dark-grey';
-			if(i<=ppdr||ppdr+pcdr<i){grid.className+=' w3-disabled';grid.style.cursor='default'}
-			else if(isToday){
-				isDispToday=true;
-				grid.className+=' w3-round-large';
-				replaceClass(menuTodayElm,'w3-button w3-ripple','w3-transparent');
-				menuTodayElm.disabled=true;
-				if(actTmoId){window.clearTimeout(actTmoId);actTmoId=null}
-			}
-			if(26586e6==ttc){
-				grid.className+=' w3-btn w3-ripple w3-round-large w3-black';grid.style.cursor='pointer';addEvt(grid,'click',onAbout)
+			if(i<=ppdr||ppdr+pcdr<i){
+				if(i%7==isFri)grid.className+=' w3-text-teal';
+				else if(i%7==isSun)grid.className+=' w3-text-red';
+				grid.className+=' w3-disabled';grid.style.cursor='default'
+			}else {
+				if(i%7==isFri)grid.className+=isToday?' w3-teal':' w3-text-teal';
+				else if(i%7==isSun)grid.className+=isToday?' w3-red':' w3-text-red';
+				else if(isToday)grid.className+=' w3-dark-grey';
+				else if(26586e6==ttc){
+					grid.className+=' w3-black w3-round-large w3-btn w3-ripple';grid.style.cursor='pointer';addEvt(grid,'click',onAbout)
+				}
+				if(isToday){
+					if(actTmoId){window.clearTimeout(actTmoId);actTmoId=null}
+					isDispToday=true;
+					grid.className+=' w3-round-large';
+					replaceClass(menuTodayElm,'w3-button w3-ripple','w3-transparent');
+					menuTodayElm.disabled=true
+				}
 			}
 			pde.innerHTML=Calendar.getDigit(pdate);sde.innerHTML=Calendar.getDigit(sdate)+' '+smsn;pdate++;
 			if(pdate>pdim){pdate=1;dispDate.setMonth(dispDate.getMonth()+1);pdim=dispDate.getDayCountInMonth()}
@@ -197,7 +201,7 @@ function Calendar(isHijr,year,month,firstDay,lang,theme,tmout){
 	},
 	onChgCalMod=function(){cd.setHijriMode(!isHijr);applyTodayTmout()},
 	onFirstDay=function(){
-		if (menuFirstDayElm.className.indexOf('expanded')==-1){replaceClass(menuFirstDayElm,'collapsed','expanded');isAccOpened=true}
+		if(menuFirstDayElm.className.indexOf('expanded')==-1){replaceClass(menuFirstDayElm,'collapsed','expanded');isAccOpened=true}
 		else{replaceClass(menuFirstDayElm,'expanded','collapsed');isAccOpened=false}
 	},
 	onSelFirstDay=function(ev){
